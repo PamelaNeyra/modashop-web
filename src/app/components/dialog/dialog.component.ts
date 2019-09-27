@@ -183,7 +183,7 @@ export class DialogComponent implements OnInit, OnDestroy {
    
       doc.setFontSize(8);
       doc.setFontType("bold");
-      let lines = doc.splitTextToSize("ICHICAWA", 350);
+      let lines = doc.splitTextToSize("FISOL", 350);
       doc.text(300, 95, lines, 'center');
       y = 0 + (8 * (lines.length - 1));
 
