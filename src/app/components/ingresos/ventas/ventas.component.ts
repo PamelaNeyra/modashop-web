@@ -30,13 +30,14 @@ export class VentasComponent implements OnInit, OnDestroy {
   public fechasForm: FormGroup;
   public date=new FormControl(new Date());
   public date1=new FormControl(new Date());
+  public cantidad;
   constructor(
     private dialog:MatDialog,
     private comprobanteService: ComprobanteService,
     private fb: FormBuilder,
     private _route: ActivatedRoute,
     private _router: Router,
-    private maestroService: MaestroService,
+    public maestroService: MaestroService,
     private _userService: UserService) {
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
