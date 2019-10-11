@@ -28,14 +28,9 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   ]
 
   tipos = [
-    { nombre: "Productos", value: "Productos" },
-    { nombre: "Olla", value: "Olla" },
-    { nombre: "Cubiertos", value: "Cubiertos" },
-    { nombre: "Cafetera", value: "Cafetera" },
-    { nombre: "Batidora", value: "Batidora" },
-    { nombre: "Vajillas", value: "Vajillas" },
-    { nombre: "Hervidor", value: "Hervidor" },
-    { nombre: "Set completo", value: "Set completo" }
+    { nombre: "Libros", value: "Libro" },
+    { nombre: "Cómics", value: "Comic" },
+    { nombre: "Juguetes", value: "Juguete" },
   ];
 
   colores=[

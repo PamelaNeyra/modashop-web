@@ -15,7 +15,7 @@
                 <li><a [routerLink]="['/login']">Login</a></li>
                 <li><a [routerLink]="['/register']">Registro</a></li>
                 <!-- <li><a [routerLink]="['/mant-proveedor']">Proveedores</a></li> -->
-                <li><a href="https://juniorve.github.io/sis-ventas/contact.html">Contacto</a></li>
+                <li><a [routerLink]="['/sugerencias']">Contacto</a></li>
             </ul>
             <!--========== CARRITO ============-->
             <div class="top-cart-block">
@@ -31,10 +31,10 @@
                 <div class="top-cart-content">
                   <ul class="scroller" style="height: 250px;">
                     <li *ngFor="let producto of maestroService.carritoProd">
-                      <a href="shop-item.html"><img src="{{url+'get-img-producto/'+producto.imagen}}"
+                      <a [routerLink]="['/carrito']"><img src="{{producto.imagen}}"
                           alt="Rolex Classic Watch" width="37" height="34"></a>
                       <span class="cart-content-count">x {{producto.cantidadCarrito}}</span>
-                      <strong><a href="shop-item.html">{{producto.nombre}}</a></strong>
+                      <strong><a [routerLink]="['/carrito']">{{producto.nombre}}</a></strong>
                       <em>S/. {{producto.precioVenta * producto.cantidadCarrito}}</em>
                       <!-- <a href="javascript:void(0);" class="del-goods">&nbsp;</a> -->
                     </li>
@@ -66,7 +66,7 @@
         <li><a [routerLink]="['/login']">Login</a></li>
         <li><a [routerLink]="['/register']">Registro</a></li>
         <!-- <li><a [routerLink]="['/mant-proveedor']">Proveedores</a></li> -->
-        <li><a href="https://juniorve.github.io/sis-ventas/contact.html">Contacto</a></li>
+        <li><a [routerLink]="['/sugerencias']">Contacto</a></li>
     </ul>
   </div>
 </div>

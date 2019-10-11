@@ -31,10 +31,10 @@
 									  <div class="top-cart-content">
 										<ul class="scroller" style="height: 250px;">
 										  <li *ngFor="let producto of maestroService.carritoProd">
-											<a href="shop-item.html"><img src="{{url+'get-img-producto/'+producto.imagen}}"
+											<a [routerLink]="['/carrito']"><img src="{{producto.imagen}}"
 												alt="Rolex Classic Watch" width="37" height="34"></a>
 											<span class="cart-content-count">x {{producto.cantidadCarrito}}</span>
-											<strong><a href="shop-item.html">{{producto.nombre}}</a></strong>
+											<strong><a [routerLink]="['/carrito']">{{producto.nombre}}</a></strong>
 											<em>S/. {{producto.precioVenta * producto.cantidadCarrito}}</em>
 											<!-- <a href="javascript:void(0);" class="del-goods">&nbsp;</a> -->
 										  </li>
@@ -80,8 +80,8 @@
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
-						<li><a href="index.html">Inicio</a></li>
-						<li class="active"><a href="index.html"><i class="fa fa-angle-right"
+						<li><a [routerLink]="['/principal']">Inicio</a></li>
+						<li class="active"><a [routerLink]="['/categorias']"><i class="fa fa-angle-right"
 									aria-hidden="true"></i>Productos</a></li>
 					</ul>
 				</div>
@@ -150,7 +150,7 @@
 										<div *ngFor="let producto of productos" class="col-sm-4 producto">
 											<div class="product_image">
 												<img (click)="sendProducto(producto._id)"
-													src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
+													src="{{producto.imagen}}" alt="">
 											</div>
 											<div class="favorite"></div>
 											<!-- <div

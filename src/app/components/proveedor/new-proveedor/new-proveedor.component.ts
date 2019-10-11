@@ -23,7 +23,7 @@ declare var $: any;
 })
 export class NewProveedorComponent implements OnInit {
   tipoControl = new FormControl([Validators.required]);
-  tipos:any[] = [];
+  tipos: any[] = [];
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   public identity;
@@ -41,21 +41,21 @@ export class NewProveedorComponent implements OnInit {
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.proveedor = new Proveedor('', '', '', '', '', '', '',this.identity._id);
+    this.proveedor = new Proveedor('', '', '', '', '', '', '', this.identity._id);
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.getTipos();
   }
 
-  getTipos(){
+  getTipos() {
     console.log(this.token);
     this._proveedorService.getTipos(this.token).subscribe(
-      res=>{
+      res => {
         console.log(res);
-        this.tipos=res.tipos;
+        this.tipos = res.tipos;
       },
-      error=>{
+      error => {
 
       }
     );
@@ -70,23 +70,16 @@ export class NewProveedorComponent implements OnInit {
         }
         else {
           let id_proveedor = response.proveedor._id;
-          this.makeFileRequest(this.url + 'upload-img-proveedor/' + id_proveedor, [],
-            this.filesToUpload).then(
-              (result) => {
-                swal('Proveedor registrado', 'Datos guardados correctamente',{icon:"success",
-                closeOnClickOutside: false}).then(
-                  (saveProducto)=>{
-                    if(saveProducto){
-                      this._router.navigate(['/mant-proveedor']);
-                    }
-                  }
-                );
-              },
-              (error) => {
-                console.log(error);
-          swal('Error', error.message, 'error');
+          swal('Proveedor registrado', 'Datos guardados correctamente', {
+            icon: "success",
+            closeOnClickOutside: false
+          }).then(
+            (saveProducto) => {
+              if (saveProducto) {
+                this._router.navigate(['/mant-proveedor']);
               }
-            );
+            }
+          );
         }
       },
       error => {

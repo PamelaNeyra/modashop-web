@@ -30,7 +30,7 @@
                   <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
                       <li *ngFor="let producto of maestroService.carritoProd">
-                        <a href="shop-item.html"><img src="{{url+'get-img-producto/'+producto.imagen}}"
+                        <a href="shop-item.html"><img src="{{producto.imagen}}"
                             alt="Rolex Classic Watch" width="37" height="34"></a>
                         <span class="cart-content-count">x {{producto.cantidadCarrito}}</span>
                         <strong><a href="shop-item.html">{{producto.nombre}}</a></strong>
@@ -75,7 +75,7 @@
                 </tr>
                 <tr *ngFor="let producto of maestroService.carritoProd">
                   <td class="goods-page-image">
-                    <a href="javascript:;"><img src="{{url+'get-img-producto/'+producto.imagen}}" alt="Berry Lace Dress"></a>
+                    <a href="javascript:;"><img src="{{producto.imagen}}" alt="Berry Lace Dress"></a>
                   </td>
                   <td class="goods-page-description">
                     <h3><a href="javascript:;">{{producto.nombre}}</a></h3>
