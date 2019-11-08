@@ -1,5 +1,5 @@
 import { ProductoService } from './../../services/producto.service';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MaestroService } from '../../services/maestro-service.service';
@@ -11,6 +11,8 @@ import { ComprobanteService } from '../../services/comprobante.service';
 
 var jsPDF = require('jspdf');
 require('jspdf-autotable');
+
+declare var paypal;
 
 @Component({
   selector: 'app-pagar-total',
@@ -43,7 +45,41 @@ export class PagarTotalComponent implements OnInit, OnDestroy {
     this.newForm();
   }
 
+  @ViewChild('paypal',{ }) paypalElement: ElementRef;
+
+  product= {
+    price: 888.88,
+    description: 'Ejemplo',
+    img: 'https://i.ytimg.com/vi/n_KrxgXrU4w/maxresdefault.jpg'
+  }
+
+  paidFor = false;
+
   ngOnInit() {
+    paypal
+    .Buttons({
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              description: this.product.description,
+              amount: {
+                currency_code: 'USD',
+                value: this.product.price
+              }
+            }
+          ]
+        })
+      },
+      onApprove: async (data,actions)=>{
+        const order = await actions.order.capture();
+        this.paidFor = true;
+        console.log(order);
+      },
+      onError: err => {
+        console.log(err);
+      }
+    }).render(this.paypalElement.nativeElement);
     this._route.params.forEach((params: Params) => {
       if (params['total']) {
         this.totalForm.controls["total"].setValue(parseFloat(params['total']));
